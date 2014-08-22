@@ -12,3 +12,4 @@
  *
  */
 
+#include <SPI.h>

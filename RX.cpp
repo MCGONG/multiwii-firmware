@@ -6,6 +6,7 @@
 #include "Protocol.h"
 #include "MultiWii.h"
 #include "Alarms.h"
+#include "NRF24_RX.h"
 
 /**************************************************************************************/
 /***************             Global RX related variables           ********************/
@@ -455,6 +456,15 @@ void computeRC() {
         #endif
         if (rcSerial[chan] >900) {rcData[chan] = rcSerial[chan];} // only relevant channels are overridden
       }
+
+	#if defined(NRF24_V202_RX)	  
+	  if (chan<4 && (nrf24_rxState == BOUND_NEW_VALUES || nrf24_rxState == BOUND_NO_VALUES)) {
+			#if defined(FAILSAFE)
+				failsafeCnt = 0;
+			#endif
+		  rcData[chan] = nrf24_rcData[chan];
+	  }
+	 #endif
     }
   #endif
 }

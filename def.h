@@ -1272,8 +1272,7 @@
   #define ACC_ORIENTATION(X, Y, Z) {imu.accADC[ROLL] = -X; imu.accADC[PITCH] = -Y; imu.accADC[YAW] = Z;}
   #define GYRO_ORIENTATION(X, Y, Z) {imu.gyroADC[ROLL] = Y; imu.gyroADC[PITCH] = -X; imu.gyroADC[YAW] = -Z;}
   #define MAG_ORIENTATION(X, Y, Z) {imu.magADC[ROLL] = X; imu.magADC[PITCH] = Y; imu.magADC[YAW] = -Z;}
-  #define MPU6050_I2C_AUX_MASTER // MAG connected to the AUX I2C bus of MPU6050
-  #undef INTERNAL_I2C_PULLUPS
+  //#undef INTERNAL_I2C_PULLUPS
 #endif
 
 #if defined(GY_521)
@@ -1748,6 +1747,15 @@
 #if !defined(SERIAL_SUM_PPM) && !defined(SPEKTRUM) && !defined(SBUS)
   #define STANDARD_RX
 #endif
+
+#if defined(NRF24_V202_RX)
+	#define	NRF24_PIN_CE A0
+	#define	NRF24_PIN_CS A1
+#endif
+
+
+
+
 
 // Spektrum Satellite
 #if defined(SPEKTRUM)
