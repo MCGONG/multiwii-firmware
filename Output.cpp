@@ -1177,12 +1177,18 @@ void mixTable() {
     motor[4] = PIDMIX(+0  ,-1  ,+1); //FRONT
     motor[5] = PIDMIX(+0  ,+1  ,-1); //REAR
   #elif defined( HEX6X )
-    motor[0] = PIDMIX(-1/2,+7/8,+1); //REAR_R
+/*    motor[0] = PIDMIX(-1/2,+7/8,+1); //REAR_R
     motor[1] = PIDMIX(-1/2,-7/8,+1); //FRONT_R
     motor[2] = PIDMIX(+1/2,+7/8,-1); //REAR_L
     motor[3] = PIDMIX(+1/2,-7/8,-1); //FRONT_L
     motor[4] = PIDMIX(-1  ,+0  ,-1); //RIGHT
-    motor[5] = PIDMIX(+1  ,+0  ,+1); //LEFT
+    motor[5] = PIDMIX(+1  ,+0  ,+1); //LEFT*/
+    motor[0] = PIDMIX(-1,+1,-1); //REAR_R -> pin 3
+    motor[1] = 1000; // Not used 10
+    motor[2] = 1000; // Not used 11
+    motor[3] = PIDMIX(-1,-1,+1); //FRONT_R -> pin 9
+    motor[4] = PIDMIX(+1,+1,+1); //REAR_L -> pin 6
+    motor[5] = PIDMIX(+1,-1,-1); //FRONT_L -> pin 5
   #elif defined( HEX6H )
     motor[0] = PIDMIX(-1,+1,-1); //REAR_R
     motor[1] = PIDMIX(-1,-1,+1); //FRONT_R
